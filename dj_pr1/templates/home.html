@@ -1,0 +1,8 @@
+{% extends "flatpages/default.html" %}
+
+{% block content %}
+<div class="content">
+    <!-- Ссылка на контент из админки FlatPages -->
+    {{ flatpage.content|safe }}
+</div>
+{% endblock %}

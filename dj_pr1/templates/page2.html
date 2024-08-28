@@ -1,0 +1,9 @@
+{% extends "flatpages/default.html" %}
+
+{% block page_content %}
+<div class="content">
+    <!-- Ссылка на контент из админки FlatPages, повторяющаяся дважды -->
+    {{ flatpage.content|safe }}
+    {{ flatpage.content|safe }}
+</div>
+{% endblock %}

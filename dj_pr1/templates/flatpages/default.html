@@ -1,0 +1,142 @@
+<!--{% load static %}-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>{{ flatpage.title }}</title>-->
+<!--    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">-->
+<!--    <style>-->
+<!--        /* Стили для полос */-->
+<!--        .header-bar {-->
+<!--            background-color: darkgreen;-->
+<!--            height: 20mm;-->
+<!--            display: flex;-->
+<!--            justify-content: space-between;-->
+<!--            align-items: center;-->
+<!--            padding: 0 10px;-->
+<!--            color: white;-->
+<!--            position: relative;-->
+<!--        }-->
+<!--        .header-bar .links {-->
+<!--            margin-left: auto;-->
+<!--        }-->
+<!--        .header-bar a {-->
+<!--            color: white;-->
+<!--            margin-left: 20px;-->
+<!--            text-decoration: none;-->
+<!--        }-->
+<!--        .header-bar a:hover {-->
+<!--            text-decoration: underline;-->
+<!--        }-->
+<!--        .footer-bar {-->
+<!--            background-color: grey;-->
+<!--            height: 20mm;-->
+<!--            color: white;-->
+<!--            padding: 10px;-->
+<!--            display: flex;-->
+<!--            flex-direction: column; /* Располагаем элементы в колонку */-->
+<!--            align-items: flex-end;-->
+<!--            justify-content: center;-->
+<!--        }-->
+<!--        .container-page {-->
+<!--            width: 80%;-->
+<!--            margin: 0 auto;-->
+<!--            padding: 20px;-->
+<!--            background-color: white;-->
+<!--            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    &lt;!&ndash; Верхняя полоса с навигацией &ndash;&gt;-->
+<!--    <div class="header-bar">-->
+<!--        <div>{{ flatpage.title }}</div>-->
+<!--        <div class="links">-->
+<!--            <a href="/">Home</a>-->
+<!--            <a href="/page2/">Page 2</a>-->
+<!--            <a href="/admin-only/">Admin Only</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="container-page">-->
+<!--        &lt;!&ndash; Контент страницы &ndash;&gt;-->
+<!--        {{ flatpage.content }}-->
+<!--    </div>-->
+<!--    &lt;!&ndash; Нижняя полоса &ndash;&gt;-->
+<!--    <div class="footer-bar">-->
+<!--        <div>Наш телефон: +353 871444333</div>-->
+<!--        <div>наш email: dj_pr2@skillprogect.com</div>-->
+<!--    </div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ flatpage.title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        /* Стиль для шапки и подвала */
+        .header, .footer {
+            background-color: darkgreen;
+            height: 20mm;
+            padding: 5px;
+            color: white;
+        }
+        .header .links {
+            float: right;
+        }
+        .header .links a {
+            color: white;
+            margin-left: 10px;
+        }
+        .footer {
+            background-color: grey;
+            color: black;
+        }
+        .footer p {
+            margin: 0;
+        }
+        .container-page {
+            width: 80%;
+            margin: auto;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <div class="header">
+        <span>{{ flatpage.title }}</span>
+        <div class="links">
+            <a href="/">Home</a>
+            <a href="/page2">Page 2</a>
+            <a href="/admin-only">Admin Only</a>
+        </div>
+    </div>
+    <hr style="border-top: 1px solid black; margin: 0;">
+
+    <!-- Основной контейнер страницы -->
+    <div class="container-page">
+        {% block page_content %}
+        <!-- По умолчанию здесь будет контент из админки -->
+        {{ flatpage.content|safe }}
+        {% endblock %}
+    </div>
+
+    <!-- Подвал сайта -->
+    <hr style="border-top: 1px solid black; margin: 0;">
+    <div class="footer">
+        <p>Наш телефон: +353 871444333</p>
+        <p>наш email: dj_pr2@skillprogect.com</p>
+    </div>
+</body>
+</html>
